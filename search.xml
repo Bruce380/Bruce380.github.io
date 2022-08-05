@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>重绘和重排（回流）</title>
+      <link href="/2022/08/05/chong-hui-he-chong-pai-hui-liu/"/>
+      <url>/2022/08/05/chong-hui-he-chong-pai-hui-liu/</url>
+      
+        <content type="html"><![CDATA[<h2 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h2><p><img src="/2022-08-05-14-48-04.png"></p><h2 id="重排"><a href="#重排" class="headerlink" title="重排"></a>重排</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 浏览器 </tag>
+            
+            <tag> DOM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>浏览器解析过程</title>
       <link href="/2022/08/04/liu-lan-qi-jie-xi-guo-cheng/"/>
       <url>/2022/08/04/liu-lan-qi-jie-xi-guo-cheng/</url>
