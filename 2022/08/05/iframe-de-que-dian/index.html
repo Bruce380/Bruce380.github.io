@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="重绘和重排（回流）, Cobain&#39;s blog">
+    <meta name="keywords" content="iframe 的缺点, Cobain&#39;s blog">
     <meta name="description" content="To infinity and beyond">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>重绘和重排（回流） | Cobain&#39;s blog</title>
+    <title>iframe 的缺点 | Cobain&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">重绘和重排（回流）</h1>
+                    <h1 class="description center-align post-title">iframe 的缺点</h1>
                 </div>
             </div>
         </div>
@@ -411,12 +411,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
-                                <span class="chip bg-color">浏览器</span>
-                            </a>
-                        
-                            <a href="/tags/DOM/">
-                                <span class="chip bg-color">DOM</span>
+                            <a href="/tags/HTML/">
+                                <span class="chip bg-color">HTML</span>
                             </a>
                         
                     </div>
@@ -464,30 +460,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h2><p>当渲染树中的一些元素需要更新属性，而这些属性只是影响元素的外观、风格，而不会影响布局的操作，比如 <code>background-color</code>，这样的操作称为<mark>重绘</mark>。</p>
-<h2 id="重排（回流）"><a href="#重排（回流）" class="headerlink" title="重排（回流）"></a>重排（回流）</h2><p>当渲染树中的一部分（或全部）因为元素的规模尺寸、布局、隐藏等改变而需要重新构建的操作，会影响到布局的操作，这样的操作称为<mark>回流</mark>。</p>
-<br>
-<ins>一些 DOM 的操作或者属性访问可能会引起页面的回流和重绘，从而引起性能上的消耗。</ins>
-
-<h3 id="常见引起回流属性和方法"><a href="#常见引起回流属性和方法" class="headerlink" title="常见引起回流属性和方法"></a>常见引起回流属性和方法</h3><p>任何会改变元素几何信息（元素的位置和尺寸大小）的操作，都会触发回流。</p>
-<ol>
-<li>添加或者删除可见的 DOM 元素；</li>
-<li>元素尺寸改变——边距、填充、边框、宽度和高度；</li>
-<li>内容变化，比如用户在 input 框中输入文字；</li>
-<li>浏览器窗口尺寸改变——resize事件发生时；</li>
-<li>计算 <code>offsetWidth</code> 和 <code>offsetHeight</code> 属性；</li>
-<li>设置 <code>style</code> 属性的值；</li>
-<li>修改网页的默认字体时。</li>
-</ol>
-<p><strong>回流必定会发生重绘，重绘不一定会引发回流。</strong>回流所需的成本比重绘高的多，改变父节点里的子节点很可能会导致父节点的一系列回流。</p>
-<p><em>常见引起重绘属性和方法：</em><br><img src="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/note-14.png" alt="常见引起回流属性和方法"></p>
-<p><em>常见引起回流属性和方法：</em><br><img src="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/note-13.png" alt="常见引起重绘属性和方法"></p>
-<h3 id="如何减少回流？"><a href="#如何减少回流？" class="headerlink" title="如何减少回流？"></a>如何减少回流？</h3><ol>
-<li>使用 <code>transform</code> 替代 <code>top</code>；</li>
-<li>不要把节点的属性值放在一个循环里当成循环里的变量；</li>
-<li>不要使用 <code>table</code> 布局，可能很小的一个小改动会造成整个 <code>table</code> 的重新布局；</li>
-<li>把 DOM 离线后修改。如：使用 <code>documentFragment</code> 对象在内存里操作 DOM；</li>
-<li>不要一条一条地修改 DOM 的样式。与其这样，还不如预先定义好 css 的 <code>class</code>，然后修改 DOM 的 <code>className</code>。</li>
+                <p><code>iframe</code> 元素会创建包含另外一个文档的内联框架（即行内框架）。</p>
+<h2 id="主要缺点"><a href="#主要缺点" class="headerlink" title="主要缺点"></a>主要缺点</h2><ol>
+<li><code>iframe</code> 会阻塞主页面的 onload 事件。window 的 onload 事件需要在所有 iframe 加载完毕后（包含里面的元素）才会触发。在 Safari 和 Chrome 里，通过 JavaScript 动态设置 <code>iframe</code> 的 <code>src</code> 可以避免这种阻塞情况。</li>
+<li>搜索引擎的检索程序无法解读这种页面，不利于网页的 SEO 。</li>
+<li>iframe 和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。</li>
+<li>浏览器的后退按钮失效。</li>
+<li>小型的移动设备无法完全显示框架。</li>
 </ol>
 
                 
@@ -515,7 +494,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://bruce380.github.io/2022/08/05/chong-hui-he-chong-pai-hui-liu/">https://bruce380.github.io/2022/08/05/chong-hui-he-chong-pai-hui-liu/</a>
+                    <a href="https://bruce380.github.io/2022/08/05/iframe-de-que-dian/">https://bruce380.github.io/2022/08/05/iframe-de-que-dian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,12 +532,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
-                                    <span class="chip bg-color">浏览器</span>
-                                </a>
-                            
-                                <a href="/tags/DOM/">
-                                    <span class="chip bg-color">DOM</span>
+                                <a href="/tags/HTML/">
+                                    <span class="chip bg-color">HTML</span>
                                 </a>
                             
                         </div>
@@ -732,13 +707,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/08/05/html5-de-xin-te-xing/">
+                <a href="/2022/08/05/label-biao-qian-de-zuo-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="HTML5的新特性">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Label 标签的作用">
                         
-                        <span class="card-title">HTML5的新特性</span>
+                        <span class="card-title">Label 标签的作用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -766,8 +741,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/HTML5/">
-                        <span class="chip bg-color">HTML5</span>
+                    <a href="/tags/HTML/">
+                        <span class="chip bg-color">HTML</span>
                     </a>
                     
                 </div>
@@ -781,13 +756,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/04/liu-lan-qi-jie-xi-guo-cheng/">
+                <a href="/2022/08/05/cookies-sessionstorage-he-localstorage-de-qu-bie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="浏览器解析过程">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="cookies，sessionStorage 和 localStorage 的区别">
                         
-                        <span class="card-title">浏览器解析过程</span>
+                        <span class="card-title">cookies，sessionStorage 和 localStorage 的区别</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -798,7 +773,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-05
                             </span>
                         <span class="publish-author">
                             
@@ -817,10 +792,6 @@
                     
                     <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
                         <span class="chip bg-color">浏览器</span>
-                    </a>
-                    
-                    <a href="/tags/javascript/">
-                        <span class="chip bg-color">javascript</span>
                     </a>
                     
                 </div>
