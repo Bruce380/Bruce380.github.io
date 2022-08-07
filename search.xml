@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>前端性能优化</title>
+      <link href="/2022/08/07/qian-duan-xing-neng-you-hua/"/>
+      <url>/2022/08/07/qian-duan-xing-neng-you-hua/</url>
+      
+        <content type="html"><![CDATA[<p>前端性能优化主要是为了提高页面的加载速度，优化用户的访问体验。可以从这些方面来进行优化。</p><p><em>第一个方面是页面的内容方面：</em></p><ol><li>通过文件合并、css 雪碧图、使用 base64 等方式来减少 HTTP 请求数，避免过多的请求造成等待的情况。</li><li>通过 DNS 缓存等机制来减少 DNS 的查询次数。</li><li>通过设置缓存策略，对常用不变的资源进行缓存。</li><li>使用延迟加载的方式，来减少页面首屏加载时需要请求的资源。延迟加载的资源当用户需要访问时，再去请求加载。</li><li>通过用户行为，对某些资源使用预加载的方式，来提高用户需要访问资源时的响应速度。</li></ol><p><em>第二个方面是服务器方面:</em></p><ol><li>使用 CDN 服务，来提高用户对于资源请求时的响应速度。</li><li>服务器端启用 Gzip、Deflate 等方式对于传输的资源进行压缩，减小文件的体积。</li><li>尽可能减小 cookie 的大小，并且通过将静态资源分配到其他域名下，来避免对静态资源请求时携带不必要的 cookie。</li></ol><p><em>第三个方面是 CSS 和 JavaScript 方面:</em></p><ol><li>把样式表放在页面的 head 标签中，减少页面的首次渲染的时间。</li><li>避免使用 <code>@import</code> 标签。</li><li>尽量把 js 脚本放在页面底部或者使用 <code>defer</code> 或 <code>async</code> 属性，避免脚本的加载和执行阻塞页面的渲染。</li><li>通过对 JavaScript 和 CSS 的文件进行压缩，来减小文件的体积。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTML </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>head中的标签</title>
+      <link href="/2022/08/07/head-zhong-de-biao-qian/"/>
+      <url>/2022/08/07/head-zhong-de-biao-qian/</url>
+      
+        <content type="html"><![CDATA[<p><code>&lt;head&gt;</code> 标签用于定义文档的头部，它是所有头部元素的容器。<code>&lt;head&gt;</code> 中的元素可以引用脚本、指示浏览器在哪里找到样式表、提供元信息等等。</p><p>文档的头部描述了文档的各种属性和信息，包括文档的标题、在 Web 中的位置以及和其他文档的关系等。绝大多数文档头部包含的数据都不会真正作为内容显示给读者。</p><p>下面这些标签可用在 head 部分：<code>&lt;base&gt;</code>, <code>&lt;link&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;script&gt;</code>, <code>&lt;style&gt;</code>, 以及 <code>&lt;title&gt;</code>。</p><p><code>&lt;title&gt;</code> 定义文档的标题，它是 <strong>head 部分中唯一必需的元素</strong>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTML </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>浏览器架构</title>
       <link href="/2022/08/06/liu-lan-qi-jia-gou/"/>
       <url>/2022/08/06/liu-lan-qi-jia-gou/</url>
