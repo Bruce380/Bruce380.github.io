@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="前端性能优化, Cobain&#39;s blog">
+    <meta name="keywords" content="flex弹性盒子布局, Cobain&#39;s blog">
     <meta name="description" content="To infinity and beyond">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>前端性能优化 | Cobain&#39;s blog</title>
+    <title>flex弹性盒子布局 | Cobain&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">前端性能优化</h1>
+                    <h1 class="description center-align post-title">flex弹性盒子布局</h1>
                 </div>
             </div>
         </div>
@@ -411,8 +411,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/HTML/">
-                                <span class="chip bg-color">HTML</span>
+                            <a href="/tags/CSS/">
+                                <span class="chip bg-color">CSS</span>
                             </a>
                         
                     </div>
@@ -436,7 +436,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-07
+                    2022-08-08
                 </div>
                 
 
@@ -460,27 +460,27 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>前端性能优化主要是为了提高页面的加载速度，优化用户的访问体验。可以从这些方面来进行优化。</p>
-<p><em>第一个方面是页面的内容方面：</em></p>
+                <p>Flex是FlexibleBox的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
+<p>任何一个容器都可以指定为Flex布局。行内元素也可以使用Flex布局。注意，设为Flex布局以后，子元素的<code>float</code>、<code>clear</code>和<code>vertical-align</code>属性将失效。</p>
+<p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex元素（flex item），简称”元素”。</p>
+<p>容器默认存在两根轴：<mark>水平的主轴（main axis）</mark>和<mark>垂直的辅轴（cross axis）</mark>，元素默认沿主轴排列。</p>
+<p>以下6个属性设置在<strong>容器上</strong>:</p>
 <ol>
-<li>通过文件合并、css 雪碧图、使用 base64 等方式来减少 HTTP 请求数，避免过多的请求造成等待的情况。</li>
-<li>通过 DNS 缓存等机制来减少 DNS 的查询次数。</li>
-<li>通过设置缓存策略，对常用不变的资源进行缓存。</li>
-<li>使用延迟加载的方式，来减少页面首屏加载时需要请求的资源。延迟加载的资源当用户需要访问时，再去请求加载。</li>
-<li>通过用户行为，对某些资源使用预加载的方式，来提高用户需要访问资源时的响应速度。</li>
+<li><code>flex-direction</code>属性决定主轴的方向（即元素的排列方向）。</li>
+<li><code>flex-wrap</code>属性定义，如果一条轴线排不下，如何换行。</li>
+<li><code>flex-flow</code>属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</li>
+<li><code>justify-content</code>属性定义了元素在主轴上的对齐方式。 可选值：<code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>space-around</code>, <code>space-between</code>, <code>stretch</code>。</li>
+<li><code>align-items</code>属性定义元素在辅轴上如何对齐。 可选值：<code>flex-start</code>, <code>flex-end</code>, <code>center</code>, <code>stretch</code></li>
+<li><code>align-content</code>属性定义了多根轴线的对齐方式。如果元素只有一根轴线，该属性不起作用。</li>
 </ol>
-<p><em>第二个方面是服务器方面:</em></p>
+<p>以下6个属性设置在<strong>元素上</strong>：</p>
 <ol>
-<li>使用 CDN 服务，来提高用户对于资源请求时的响应速度。</li>
-<li>服务器端启用 Gzip、Deflate 等方式对于传输的资源进行压缩，减小文件的体积。</li>
-<li>尽可能减小 cookie 的大小，并且通过将静态资源分配到其他域名下，来避免对静态资源请求时携带不必要的 cookie。</li>
-</ol>
-<p><em>第三个方面是 CSS 和 JavaScript 方面:</em></p>
-<ol>
-<li>把样式表放在页面的 head 标签中，减少页面的首次渲染的时间。</li>
-<li>避免使用 <code>@import</code> 标签。</li>
-<li>尽量把 js 脚本放在页面底部或者使用 <code>defer</code> 或 <code>async</code> 属性，避免脚本的加载和执行阻塞页面的渲染。</li>
-<li>通过对 JavaScript 和 CSS 的文件进行压缩，来减小文件的体积。</li>
+<li><code>order</code>属性定义元素的排列顺序。数值越小，排列越靠前，默认为0。</li>
+<li><code>flex-grow</code>属性定义元素的增长系数，默认为0，即如果存在剩余空间，也不放大。</li>
+<li><code>flex-shrink</code>属性定义了项目的缩减系数，默认为1，即如果空间不足，该项目将缩小。</li>
+<li><code>flex-basis</code>属性定义了在分配多余空间之前，元素占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</li>
+<li><code>flex</code>属性是flex-grow，flex-shrink和flex-basis的简写，默认值为0 1 auto。</li>
+<li><code>align-self</code>属性允许单个元素有与其他元素不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</li>
 </ol>
 
                 
@@ -508,7 +508,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://bruce380.github.io/2022/08/07/qian-duan-xing-neng-you-hua/">https://bruce380.github.io/2022/08/07/qian-duan-xing-neng-you-hua/</a>
+                    <a href="https://bruce380.github.io/2022/08/08/flex-dan-xing-he-zi-bu-ju/">https://bruce380.github.io/2022/08/08/flex-dan-xing-he-zi-bu-ju/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -546,8 +546,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/HTML/">
-                                    <span class="chip bg-color">HTML</span>
+                                <a href="/tags/CSS/">
+                                    <span class="chip bg-color">CSS</span>
                                 </a>
                             
                         </div>
@@ -721,13 +721,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/08/08/css-de-he-zi-mo-xing/">
+                <a href="/2022/08/09/shuang-xiang-shu-ju-bang-ding/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="CSS 的盒子模型">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="双向数据绑定">
                         
-                        <span class="card-title">CSS 的盒子模型</span>
+                        <span class="card-title">双向数据绑定</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -738,8 +738,57 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-09
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    学习笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/08/08/css3-de-xin-te-xing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="CSS3 的新特性">
+                        
+                        <span class="card-title">CSS3 的新特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -757,55 +806,6 @@
                     
                     <a href="/tags/CSS/">
                         <span class="chip bg-color">CSS</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/08/07/head-zhong-de-biao-qian/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="head中的标签">
-                        
-                        <span class="card-title">head中的标签</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-07
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学习笔记
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/HTML/">
-                        <span class="chip bg-color">HTML</span>
                     </a>
                     
                 </div>
