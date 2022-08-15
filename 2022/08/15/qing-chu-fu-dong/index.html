@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="防抖和节流, Cobain&#39;s blog">
+    <meta name="keywords" content="清除浮动, Cobain&#39;s blog">
     <meta name="description" content="To infinity and beyond">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>防抖和节流 | Cobain&#39;s blog</title>
+    <title>清除浮动 | Cobain&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">防抖和节流</h1>
+                    <h1 class="description center-align post-title">清除浮动</h1>
                 </div>
             </div>
         </div>
@@ -411,12 +411,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
-                                <span class="chip bg-color">浏览器</span>
-                            </a>
-                        
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/CSS/">
+                                <span class="chip bg-color">CSS</span>
                             </a>
                         
                     </div>
@@ -440,7 +436,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-09
+                    2022-08-15
                 </div>
                 
 
@@ -464,101 +460,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h2><p>前面的所有的触发都被取消，最后一次执行在规定的时间之后才会触发，也就是说如果连续快速的触发,只会执行最后一次。</p>
-<h3 id="手写防抖函数"><a href="#手写防抖函数" class="headerlink" title="手写防抖函数"></a>手写防抖函数</h3><p>假设我们要点击一个按钮新增一条信息，当然我们不希望每次点击都调用接口新增，我们希望多次点击只新增一次。<br><img src="https://img-blog.csdnimg.cn/4839ac1149844caa942cdfd72f696170.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA5YmN56uv6bKB54-t,size_20,color_FFFFFF,t_70,g_se,x_16"></p>
-<p>首先我们先简单的模拟一个按钮被点击的过程。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> addBtn<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"add"</span><span class="token punctuation">)</span>
-<span class="token keyword">function</span> <span class="token function">addOne</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'添加数据'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-addBtn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span>addOne<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="为什么需要清除浮动？"><a href="#为什么需要清除浮动？" class="headerlink" title="为什么需要清除浮动？"></a>为什么需要清除浮动？</h2><p>浮动元素可以左右移动，直到遇到另一个浮动元素或者遇到它外边缘的包含框。浮动框不属于文档流中的普通流，当元素浮动之后，不会影响块级元素的布局，只会影响内联元素布局。此时文档流中的普通流就会表现得该浮动框不存在一样的布局模式。当包含框的高度小于浮动框的时候，此时就会出现<strong>“高度塌陷”</strong>。</p>
+<p>清除浮动是为了清除使用浮动元素产生的影响。浮动的元素，高度会塌陷，而高度的塌陷使我们页面后面的布局不能正常显示。</p>
+<h2 id="清除浮动的方式"><a href="#清除浮动的方式" class="headerlink" title="清除浮动的方式"></a>清除浮动的方式</h2><ol>
+<li>使用clear属性清除浮动。</li>
+</ol>
+<h3 id="使用-clear-属性清除浮动的原理"><a href="#使用-clear-属性清除浮动的原理" class="headerlink" title="使用 clear 属性清除浮动的原理"></a>使用 clear 属性清除浮动的原理</h3><p>使用clear属性清除浮动，其语法如下：</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">clear</span><span class="token punctuation">:</span>none|left|right|both<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果单看字面意思，<code>clear:left</code>应该是“清除左浮动”，<code>clear:right</code>应该是“清除右浮动”的意思，实际上，这种解释是有问题的，因为浮动一直还在，并没有清除。</p>
+<p>官方对clear属性的解释是：<mark>“元素盒子的边不能和前面的浮动元素相邻。”</mark>，我们对元素设置clear属性是为了避免浮动元素对该元素的影响，而不是清除掉浮动。</p>
+<p>还需要注意的一点是clear属性指的是元素盒子的边不能和前面的浮动元素相邻，注意这里“前面的”3个字，也就是clear属性对“后面的”浮动元素是不闻不问的。考虑到float属性要么是<code>left</code>，要么是<code>right</code>，不可能同时存在，同时由于clear属性对“后面的”浮动元素不闻不问，因此，当<code>clear:left</code>有效的时候，<code>clear:right</code>必定无效，也就是此时<code>clear:left</code>等同于设置<code>clear:both</code>；同样地，<code>clear:right</code>如果有效也是等同于设置<code>clear:both</code>。由此可见，<code>clear:left</code>和<code>clear:right</code>这两个声明就没有任何使用的价值，至少在CSS世界中是如此，直接使用<code>clear:both</code>吧。</p>
+<p>一般使用伪元素的方式清除浮动:</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.clear::before,  // 解决外边距重叠的问题
+.clear::after</span><span class="token punctuation">{</span>   // 解决高度塌陷的问题
+<span class="token property">content</span><span class="token punctuation">:</span><span class="token string">''</span><span class="token punctuation">;</span>
+<span class="token property">display</span><span class="token punctuation">:</span>table<span class="token punctuation">;</span> //也可以是<span class="token string">'block'</span>，或者是<span class="token string">'list-item'</span>
+<span class="token property">clear</span><span class="token punctuation">:</span>both<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>因为我们需要对执行的事件进行处理所以接下来我们需要封装一下addOne函数。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> addBtn<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"add"</span><span class="token punctuation">)</span>
-<span class="token keyword">function</span> <span class="token function">addOne</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'添加数据'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token parameter">fun</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-<span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-<span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-addBtn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span><span class="token function">debounce</span><span class="token punctuation">(</span>addOne<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>clear属性只有块级元素才有效的，而<code>::after</code>等伪元素默认都是内联水平，这就是借助伪元素清除浮动影响时需要设置<code>display</code>属性值的原因。</p>
+<ol>
+<li>使用BFC块级格式化上下文来清除浮动。<br>因为BFC元素不会影响外部元素的特点，所以BFC元素也可以用来清除浮动的影响，因为如果不清除，子元素浮动则父元素高度塌陷，必然会影响后面元素布局和定位，这显然有违BFC元素的子元素不会影响外部元素的设定。</li>
+</ol>
 
-<p>上面我们用闭包处理了一下addOne函数，接下来我们需要添加一个延时器setTimeout来倒计时，当我们点击按钮后过2s再执行。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token parameter">fun<span class="token punctuation">,</span>time</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-<span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
-<span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>time<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-addBtn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span><span class="token function">debounce</span><span class="token punctuation">(</span>addOne<span class="token punctuation">,</span><span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>现在我们的一个防抖功能就完成了，但是这还没完，如果我们在addOne()打印this会发现我们这样执行的this是指向Window的。</p>
-<p>这当然不是我们所希望的，我们需要使用apply来改变this指向，再者就是我们需要考虑到执行函数的参数，因为不同的函数肯定会有不同的参数传入,对于参数我们可以使用arguments处理。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token parameter">fun<span class="token punctuation">,</span>time</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">let</span> timer
-  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span>
-    <span class="token keyword">let</span> args <span class="token operator">=</span> arguments
-    timer<span class="token operator">=</span><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
-      <span class="token function">fun</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>args<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>time<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h2><p>在规定的间隔时间范围内不会重复触发回调，只有大于这个时间间隔才会触发回调，把频繁触发变为少量触发。</p>
-<h3 id="手写节流函数"><a href="#手写节流函数" class="headerlink" title="手写节流函数"></a>手写节流函数</h3><p><strong>原理：定义一个开关变量flag，调用的时候把它赋值为true，然后再写一个定时器，待定时器结束后再赋值为false。 再定时器还未结束期间，再次调用函数时判定flag，为true的话直接return就行。</strong></p>
-<p>极简版</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> timer <span class="token operator">=</span> <span class="token keyword">null</span>
-<span class="token keyword">let</span> flag <span class="token operator">=</span> <span class="token boolean">false</span>
-<span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> delay</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token comment">// true 表示上次执行未结束</span>
-    flag <span class="token operator">=</span> <span class="token boolean">true</span>
-    timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-        <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        flag <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token comment">// 结束后重新设置为false</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
- 
-<span class="token comment">// 测试函数</span>
-<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
- 
-window<span class="token punctuation">.</span><span class="token function-variable function">onscroll</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// test() // 不用节流的话，页面滚动一直在调用</span>
-    <span class="token function">throttle</span><span class="token punctuation">(</span>test<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token comment">// 加上节流，即使页面一直滚动，也只会每隔一秒执行一次test函数</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>优化版</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"> 
-<span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> delay</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">let</span> timer <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment">// 把变量放函数里面，避免全局污染</span>
-    <span class="token keyword">let</span> flag <span class="token operator">=</span> <span class="token boolean">false</span>
-    <span class="token keyword">let</span> that <span class="token operator">=</span> <span class="token keyword">this</span>
-    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span> <span class="token keyword">return</span>
-        flag <span class="token operator">=</span> <span class="token boolean">true</span>
-        <span class="token keyword">let</span> arg <span class="token operator">=</span> arguments <span class="token comment">// 此处为fn函数的参数</span>
-        timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-            <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>that<span class="token punctuation">,</span> arg<span class="token punctuation">)</span>
-            flag <span class="token operator">=</span> <span class="token boolean">false</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
- 
- 
-<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span>b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
- 
-<span class="token keyword">let</span> throttleTest <span class="token operator">=</span> <span class="token function">throttle</span><span class="token punctuation">(</span>test<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
- 
-window<span class="token punctuation">.</span><span class="token function-variable function">onscroll</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">throttleTest</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -584,7 +508,7 @@ window<span class="token punctuation">.</span><span class="token function-variab
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://bruce380.github.io/2022/08/09/fang-dou-he-jie-liu/">https://bruce380.github.io/2022/08/09/fang-dou-he-jie-liu/</a>
+                    <a href="https://bruce380.github.io/2022/08/15/qing-chu-fu-dong/">https://bruce380.github.io/2022/08/15/qing-chu-fu-dong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -622,12 +546,8 @@ window<span class="token punctuation">.</span><span class="token function-variab
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
-                                    <span class="chip bg-color">浏览器</span>
-                                </a>
-                            
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/CSS/">
+                                    <span class="chip bg-color">CSS</span>
                                 </a>
                             
                         </div>
@@ -801,13 +721,13 @@ window<span class="token punctuation">.</span><span class="token function-variab
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/08/15/shi-me-shi-bao-han-kuai/">
+                <a href="/2022/08/15/css-you-hua-ti-gao-xing-neng-de-fang-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="什么是包含块">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="CSS 优化、提高性能的方法">
                         
-                        <span class="card-title">什么是包含块</span>
+                        <span class="card-title">CSS 优化、提高性能的方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -850,13 +770,13 @@ window<span class="token punctuation">.</span><span class="token function-variab
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/09/shuang-xiang-shu-ju-bang-ding/">
+                <a href="/2022/08/15/bfc-gui-fan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="双向数据绑定">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="BFC 规范">
                         
-                        <span class="card-title">双向数据绑定</span>
+                        <span class="card-title">BFC 规范</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -867,7 +787,7 @@ window<span class="token punctuation">.</span><span class="token function-variab
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-15
                             </span>
                         <span class="publish-author">
                             
@@ -884,8 +804,8 @@ window<span class="token punctuation">.</span><span class="token function-variab
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
                     </a>
                     
                 </div>
