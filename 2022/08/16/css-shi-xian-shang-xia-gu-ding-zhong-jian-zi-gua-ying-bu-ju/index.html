@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="什么是包含块, Cobain&#39;s blog">
+    <meta name="keywords" content="css 实现上下固定中间自适应布局, Cobain&#39;s blog">
     <meta name="description" content="To infinity and beyond">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>什么是包含块 | Cobain&#39;s blog</title>
+    <title>css 实现上下固定中间自适应布局 | Cobain&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">什么是包含块</h1>
+                    <h1 class="description center-align post-title">css 实现上下固定中间自适应布局</h1>
                 </div>
             </div>
         </div>
@@ -436,7 +436,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-15
+                    2022-08-16
                 </div>
                 
 
@@ -460,23 +460,61 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>包含块（containing block）就是元素用来计算和定位的一个框。</p>
-<p>当我们设置百分比单位时，元素的值是参照于包含块的指定值进行计算的。</p>
-<p>包含块就是包含了当前元素的块元素，根据不同的情况元素的包含块也不同：</p>
-<p><strong>1. 普通元素的包含块就是离他最近的祖先块元素</strong></p>
-<p>以下边的网页为例</p>
-<ul>
-<li><code>body</code>的包含块是<code>html</code></li>
-<li><code>html</code>的包含块是<code>初始包含块</code></li>
-</ul>
-<p><strong>2. 对于设置了绝对定位的元素（<code>position</code>为<code>absolute</code>）</strong></p>
-<ul>
-<li>它的包含块就是离它最近的开启了定位的祖先元素</li>
-<li>如果所有的祖先元素都没有开启定位，则它的包含块就是初始包含块</li>
-<li>绝对定位元素是参照于它的包含块进行定位的</li>
-</ul>
-<p>如果没有符合条件的祖先元素，则“包含块”是“初始包含块”。</p>
+                <h2 id="利用绝对定位实现"><a href="#利用绝对定位实现" class="headerlink" title="利用绝对定位实现"></a>利用绝对定位实现</h2><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
+<span class="token selector">.header</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.container</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">bottom</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.footer</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="利用flex布局实现"><a href="#利用flex布局实现" class="headerlink" title="利用flex布局实现"></a>利用flex布局实现</h2><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">html,
+body</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.header</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.container</span> <span class="token punctuation">{</span>
+  <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.footer</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -502,7 +540,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://bruce380.github.io/2022/08/15/shi-me-shi-bao-han-kuai/">https://bruce380.github.io/2022/08/15/shi-me-shi-bao-han-kuai/</a>
+                    <a href="https://bruce380.github.io/2022/08/16/css-shi-xian-shang-xia-gu-ding-zhong-jian-zi-gua-ying-bu-ju/">https://bruce380.github.io/2022/08/16/css-shi-xian-shang-xia-gu-ding-zhong-jian-zi-gua-ying-bu-ju/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -715,13 +753,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/08/15/visibility-shu-xing/">
+                <a href="/2022/08/17/css-liang-lan-bu-ju-de-shi-xian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="visibility 属性">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="css 两栏布局的实现">
                         
-                        <span class="card-title">visibility 属性</span>
+                        <span class="card-title">css 两栏布局的实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -732,7 +770,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
                         </span>
                         <span class="publish-author">
                             
@@ -764,13 +802,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/09/fang-dou-he-jie-liu/">
+                <a href="/2022/08/16/chang-jian-de-yuan-su-yin-cang-fang-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="防抖和节流">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="常见的元素隐藏方式">
                         
-                        <span class="card-title">防抖和节流</span>
+                        <span class="card-title">常见的元素隐藏方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -781,7 +819,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-16
                             </span>
                         <span class="publish-author">
                             
@@ -798,12 +836,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
-                        <span class="chip bg-color">浏览器</span>
-                    </a>
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
                     </a>
                     
                 </div>

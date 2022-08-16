@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="什么是包含块, Cobain&#39;s blog">
+    <meta name="keywords" content="圣杯布局和双飞翼布局, Cobain&#39;s blog">
     <meta name="description" content="To infinity and beyond">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>什么是包含块 | Cobain&#39;s blog</title>
+    <title>圣杯布局和双飞翼布局 | Cobain&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">什么是包含块</h1>
+                    <h1 class="description center-align post-title">圣杯布局和双飞翼布局</h1>
                 </div>
             </div>
         </div>
@@ -436,7 +436,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-15
+                    2022-08-16
                 </div>
                 
 
@@ -460,22 +460,118 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>包含块（containing block）就是元素用来计算和定位的一个框。</p>
-<p>当我们设置百分比单位时，元素的值是参照于包含块的指定值进行计算的。</p>
-<p>包含块就是包含了当前元素的块元素，根据不同的情况元素的包含块也不同：</p>
-<p><strong>1. 普通元素的包含块就是离他最近的祖先块元素</strong></p>
-<p>以下边的网页为例</p>
-<ul>
-<li><code>body</code>的包含块是<code>html</code></li>
-<li><code>html</code>的包含块是<code>初始包含块</code></li>
+                <h2 id="什么是圣杯布局和双飞翼布局？"><a href="#什么是圣杯布局和双飞翼布局？" class="headerlink" title="什么是圣杯布局和双飞翼布局？"></a>什么是圣杯布局和双飞翼布局？</h2><p>圣杯布局和双飞翼布局是一样的，都是两边固定宽度，中间自适应的三栏布局，中间栏要放在文档流前面以优先渲染。不过两者实现方式上有些区别。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525170807466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTU5MDYy,size_16,color_FFFFFF,t_70" alt="圣杯布局"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200525170837248.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMTU5MDYy,size_16,color_FFFFFF,t_70" alt="双飞翼布局"></p>
+<h2 id="为什么要使用双飞翼布局和圣杯布局"><a href="#为什么要使用双飞翼布局和圣杯布局" class="headerlink" title="为什么要使用双飞翼布局和圣杯布局?"></a>为什么要使用双飞翼布局和圣杯布局?</h2><p>都是为了解决两边顶宽，中间自适应的三栏布局，中间栏要在放在文档流前面以优先渲染。</p>
+<h2 id="原理及代码"><a href="#原理及代码" class="headerlink" title="原理及代码"></a>原理及代码</h2><p><strong>圣杯布局</strong>：为了中间div内容不被遮挡，将中间div设置了左右<code>padding-left</code>和<code>padding-right</code>后，将左右两个div用相对布局<code>position: relative</code>并分别配合right和left属性，以便左右两栏div移动后不遮挡中间div。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>圣杯布局<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+			<span class="token selector">.container</span> <span class="token punctuation">{</span>
+				<span class="token property">border</span><span class="token punctuation">:</span> 1px solid yellow<span class="token punctuation">;</span>
+				<span class="token property">padding</span><span class="token punctuation">:</span> 0 300px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token selector">.container div</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">/* 中间自适应 */</span>
+			<span class="token selector">.main</span> <span class="token punctuation">{</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+				<span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+				<span class="token property">background</span><span class="token punctuation">:</span> #FFFF00<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">/* 左 */</span>
+			<span class="token selector">.left</span> <span class="token punctuation">{</span>
+				<span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+				<span class="token property">background</span><span class="token punctuation">:</span> darkcyan<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -100%<span class="token punctuation">;</span>
+				<span class="token property">left</span><span class="token punctuation">:</span> -300px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">/* 右 */</span>
+			<span class="token selector">.right</span> <span class="token punctuation">{</span>
+				<span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+				<span class="token property">background</span><span class="token punctuation">:</span> #0000FF<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -300px<span class="token punctuation">;</span>
+				<span class="token property">right</span><span class="token punctuation">:</span> -300px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+		<span class="token comment">&lt;!-- 圣杯布局 --&gt;</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token comment">&lt;!-- 中间自适应 --&gt;</span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>main<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+			<span class="token comment">&lt;!-- 两边定宽 --&gt;</span>
+			<span class="token comment">&lt;!-- 左 --&gt;</span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>left<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+			<span class="token comment">&lt;!-- 右 --&gt;</span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>right<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>双飞翼布局</strong>：为了中间div内容不被遮挡，直接在中间div内部创建子div用于放置内容，在该子div里用<code>margin-left</code>和<code>margin-right</code>为左右两栏div留出位置。多了1个div，少用大致4个css属性（圣杯布局中间div的<code>padding-left</code>和<code>padding-right</code>这2个属性，加上左右两个div用相对布局<code>position: relative</code>及对应的right和left共4个属性，一共6个；而双飞翼布局子div里用<code>margin-left</code>和<code>margin-right</code>共2个属性，6-2=4）</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>双飞翼布局<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+			<span class="token selector">.col</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token selector">#main</span> <span class="token punctuation">{</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+				<span class="token property">height</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+				<span class="token property">background-color</span><span class="token punctuation">:</span> #ccc<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token selector">#main-wrap</span> <span class="token punctuation">{</span>
+				<span class="token property">margin</span><span class="token punctuation">:</span> 0 190px 0 190px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token selector">#left</span> <span class="token punctuation">{</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 190px<span class="token punctuation">;</span>
+				<span class="token property">height</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -100%<span class="token punctuation">;</span>
+				<span class="token property">background-color</span><span class="token punctuation">:</span> #0000FF<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token selector">#right</span> <span class="token punctuation">{</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 190px<span class="token punctuation">;</span>
+				<span class="token property">height</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -190px<span class="token punctuation">;</span>
+				<span class="token property">background-color</span><span class="token punctuation">:</span> #FF0000<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+		<span class="token comment">&lt;!-- 双飞翼布局 --&gt;</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main-wrap<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+					#main
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+				#left
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+				#right
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="两种布局实现方式对比"><a href="#两种布局实现方式对比" class="headerlink" title="两种布局实现方式对比"></a>两种布局实现方式对比</h2><ul>
+<li>两种布局方式都是把主列放在文档流最前面，使主列优先加载。</li>
+<li>两种布局方式在实现上也有相同之处，都是让三列浮动，然后通过负外边距形成三列布局。</li>
+<li>两种布局方式的不同之处在于如何处理中间主列的位置： <strong>圣杯布局是利用父容器的左、右内边距+两个从列相对定位</strong>； <strong>双飞翼布局是把主列嵌套在一个新的父级块中利用主列的左、右外边距进行布局调整</strong>。</li>
 </ul>
-<p><strong>2. 对于设置了绝对定位的元素（<code>position</code>为<code>absolute</code>）</strong></p>
-<ul>
-<li>它的包含块就是离它最近的开启了定位的祖先元素</li>
-<li>如果所有的祖先元素都没有开启定位，则它的包含块就是初始包含块</li>
-<li>绝对定位元素是参照于它的包含块进行定位的</li>
-</ul>
-<p>如果没有符合条件的祖先元素，则“包含块”是“初始包含块”。</p>
 
                 
             </div>
@@ -502,7 +598,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://bruce380.github.io/2022/08/15/shi-me-shi-bao-han-kuai/">https://bruce380.github.io/2022/08/15/shi-me-shi-bao-han-kuai/</a>
+                    <a href="https://bruce380.github.io/2022/08/16/sheng-bei-bu-ju-he-shuang-fei-yi-bu-ju/">https://bruce380.github.io/2022/08/16/sheng-bei-bu-ju-he-shuang-fei-yi-bu-ju/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -715,13 +811,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/08/15/visibility-shu-xing/">
+                <a href="/2022/08/16/chang-jian-de-yuan-su-yin-cang-fang-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="visibility 属性">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="常见的元素隐藏方式">
                         
-                        <span class="card-title">visibility 属性</span>
+                        <span class="card-title">常见的元素隐藏方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -732,7 +828,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-16
                         </span>
                         <span class="publish-author">
                             
@@ -764,13 +860,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/09/fang-dou-he-jie-liu/">
+                <a href="/2022/08/16/css-yu-chu-li-qi-hou-chu-li-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="防抖和节流">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="CSS 预处理器/后处理器">
                         
-                        <span class="card-title">防抖和节流</span>
+                        <span class="card-title">CSS 预处理器/后处理器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -781,7 +877,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-16
                             </span>
                         <span class="publish-author">
                             
@@ -798,12 +894,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
-                        <span class="chip bg-color">浏览器</span>
-                    </a>
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
                     </a>
                     
                 </div>
