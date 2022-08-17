@@ -488,7 +488,7 @@
 <p><img src="/../images/defer%E3%80%81async%E5%8C%BA%E5%88%AB.png" alt="defer、async区别"></p>
 <p><strong>文档的预解析:</strong><br> Webkit 和 Firefox 都做了这个优化，当执行 JavaScript 脚本时，另一个线程解析剩下的文档，并加载后面需要通过网络加载的资源。这种方式可以使资源并行加载从而使整体速度更快。需要注意的是，预解析并不改变 DOM 树，它将这个工作留给主解析过程，自己只解析外部资源的引用，比如外部脚本、样式表及图片。</p>
 <p><strong>CSS 如何阻塞文档解析？</strong><br>理论上，既然样式表不改变 DOM 树，也就没有必要停下文档的解析等待它们，然而，存在一个问题，JavaScript 脚本执行时可能在文档的解析过程中请求样式信息，如果样式还没有加载和解析，脚本将得到错误的值，显然这将会导致很多问题。所以如果浏览器尚未完成 <code>CSSOM</code> 的下载和构建，而我们却想在此时运行脚本，那么浏览器将延迟 JavaScript 脚本执行和文档的解析，直至其完成 CSSOM 的下载和构建。也就是说，在这种情况下，浏览器会先下载和构建 <code>CSSOM</code>，然后再执行 JavaScript，最后再继续文档的解析。</p>
-
+<link rel="stylesheet" href="/css/bilicard.css" type="text/css">
                 
             </div>
             <hr/>
