@@ -469,7 +469,39 @@
 <li><p>第三种是<strong>构造器调用模式</strong>，如果一个函数用 new 调用时，函数执行前会新创建一个对象，this 指向这个新创建的对象；</p>
 </li>
 <li><p>第四种是 <strong><code>apply</code> 、 <code>call</code> 和 <code>bind</code> 调用模式</strong>，这三个方法都可以显示的指定调用函数的 this 指向。其中 <code>apply</code> 方法接收两个参数：一个是 this 绑定的对象，一个是参数数组。<code>call</code> 方法接收的参数，第一个是 this 绑定的对象，后面的其余参数是传入函数执行的参数。也就是说，在使用 <code>call()</code> 方法时，传递给函数的参数必须逐个列举出来。<code>bind</code> 方法通过传入一个对象，返回一个 this 绑定了传入对象的新函数。这个函数的 this 指向除了使用 new 时会被改变，其他情况下都不会改变。</p>
-</li>
+<p> <strong>call() 、 apply() 和 bind() 的区别？</strong></p>
+<p> <code>call</code>,<code>apply</code>,<code>bind</code>三者都用于改变函数的this对象的指向。<br> <code>bind</code> 是返回对应函数，便于稍后调用；<code>apply</code> 、<code>call</code> 则是立即调用。<br> <code>call</code>和<code>apply</code>的作用一模一样，区别仅在于传入参数的形式的不同。</p>
+<p> <code>apply</code> 接受两个参数，第一个参数指定了函数体内 this 对象的指向，第二个参数为一个带下标的集合，这个集合可以为数组，也可以为类数组，<code>apply</code> 方法把这个集合中的元素作为参数传递给被调用的函数。</p>
+<p> <code>call</code> 传入的参数数量不固定，跟 <code>apply</code> 相同的是，第一个参数也是代表函数体内的 this 指向，从第二个参数开始往后，每个参数被依次传入函数。</p>
+ <div class="bvideo">
+    <a href="//www.bilibili.com/video/BV1XX4y1w7R6" target="_blank">
+        <div class="bvideo-box">
+            <div class="bvideo-cover">
+                <div class="cover-default"></div>
+                <div class="bvideo-cover-layer" style="background-image:url(https://images.weserv.nl/?url=http://i2.hdslb.com/bfs/archive/5ee9008f615977ff34ee13f8e7172bdf49199dab.jpg)">
+                    <i class="icon-video"></i>
+                </div>
+                <span class="duration">00:06:45</span>
+            </div>
+            <div class="bvideo-info">
+                <p class="title">前端面试题：call、apply、bind的基本概念</p>
+                <p class="card-status">
+                    <span class="play-num">
+                        <i class="fa fa-youtube-play"></i>
+                        <span>1.9万</span></span>
+                    <span>
+                        <i class="fa fa-list-alt"></i>
+                        <span>55</span></span></p>
+                <div class="partition">
+                    <label class="card-label">视频</label>
+                    <label class="up-label"></label>
+                    <label class="up-name">晓舟报告</label>
+                </div>
+                <div class="actions hide"></div>
+            </div>
+        </div>
+    </a>
+</div></li>
 </ol>
 <p>这四种方式，使用构造器调用模式的优先级最高，然后是 <code>apply</code> 、 <code>call</code> 和 <code>bind</code> 调用模式，然后是方法调用模式，然后是函数调用模式。</p>
 <link rel="stylesheet" href="/css/bilicard.css" type="text/css">
