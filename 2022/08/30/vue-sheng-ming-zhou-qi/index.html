@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="This 对象的理解, Cobain&#39;s blog">
+    <meta name="keywords" content="Vue生命周期, Cobain&#39;s blog">
     <meta name="description" content="To infinity and beyond">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>This 对象的理解 | Cobain&#39;s blog</title>
+    <title>Vue生命周期 | Cobain&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">This 对象的理解</h1>
+                    <h1 class="description center-align post-title">Vue生命周期</h1>
                 </div>
             </div>
         </div>
@@ -411,8 +411,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
                             </a>
                         
                     </div>
@@ -423,8 +423,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                学习笔记
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                学习
                             </a>
                         
                     </div>
@@ -436,7 +436,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-17
+                    2022-08-30
                 </div>
                 
 
@@ -460,51 +460,57 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>this 是执行上下文中的一个属性，它指向最后一次调用这个方法的对象。在实际开发中，this 的指向可以通过四种调用模式来判断：</p>
-<ol>
-<li><p>第一种是<strong>函数调用模式</strong>，当一个函数不是一个对象的属性时，直接作为函数来调用时，this 指向全局对象；</p>
-</li>
-<li><p>第二种是<strong>方法调用模式</strong>，如果一个函数作为一个对象的方法来调用时，this 指向这个对象；</p>
-</li>
-<li><p>第三种是<strong>构造器调用模式</strong>，如果一个函数用 new 调用时，函数执行前会新创建一个对象，this 指向这个新创建的对象；</p>
-</li>
-<li><p>第四种是 <strong><code>apply</code> 、 <code>call</code> 和 <code>bind</code> 调用模式</strong>，这三个方法都可以显示的指定调用函数的 this 指向。其中 <code>apply</code> 方法接收两个参数：一个是 this 绑定的对象，一个是参数数组。<code>call</code> 方法接收的参数，第一个是 this 绑定的对象，后面的其余参数是传入函数执行的参数。也就是说，在使用 <code>call()</code> 方法时，传递给函数的参数必须逐个列举出来。<code>bind</code> 方法通过传入一个对象，返回一个 this 绑定了传入对象的新函数。这个函数的 this 指向除了使用 new 时会被改变，其他情况下都不会改变。</p>
-<p> <strong>call() 、 apply() 和 bind() 的区别？</strong></p>
-<p> <code>call</code>,<code>apply</code>,<code>bind</code>三者都用于改变函数的this对象的指向。<br> <code>bind</code> 是返回对应函数，便于稍后调用；<code>apply</code> 、<code>call</code> 则是立即调用。<br> <code>call</code>和<code>apply</code>的作用一模一样，区别仅在于传入参数的形式的不同。</p>
-<p> <code>apply</code> 接受两个参数，第一个参数指定了函数体内 this 对象的指向，第二个参数为一个带下标的集合，这个集合可以为数组，也可以为类数组，<code>apply</code> 方法把这个集合中的元素作为参数传递给被调用的函数。</p>
-<p> <code>call</code> 传入的参数数量不固定，跟 <code>apply</code> 相同的是，第一个参数也是代表函数体内的 this 指向，从第二个参数开始往后，每个参数被依次传入函数。</p>
- <div class="bvideo">
-    <a href="//www.bilibili.com/video/BV1XX4y1w7R6" target="_blank">
+                <p>每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">创建前、后
+beforeCreate   <span class="token operator">===</span><span class="token operator">&gt;</span>   没有data，没有dom
+created        <span class="token operator">===</span><span class="token operator">&gt;</span>   有data，没有dom
+
+挂载前、后
+beforeMount    <span class="token operator">===</span><span class="token operator">&gt;</span>   有data，没有dom（其实已经在准备了）
+mounted        <span class="token operator">===</span><span class="token operator">&gt;</span>   有data，有dom
+
+修改前、后
+beforeUpdate
+updated
+
+销毁前、后
+beforeDestroy
+destroyed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="什么时候用哪些生命周期？"><a href="#什么时候用哪些生命周期？" class="headerlink" title="什么时候用哪些生命周期？"></a>什么时候用哪些生命周期？</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">created    <span class="token operator">===</span><span class="token operator">&gt;</span>   请求接口
+mounted    <span class="token operator">===</span><span class="token operator">&gt;</span>   dom操作的时候
+updated    <span class="token operator">===</span><span class="token operator">&gt;</span>   观测数据是否更新了
+destroyed  <span class="token operator">===</span><span class="token operator">&gt;</span>   当用户关闭页面，但是业务上要记录一些东西的时候<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<div class="bvideo">
+    <a href="//www.bilibili.com/video/BV1oa411977E" target="_blank">
         <div class="bvideo-box">
             <div class="bvideo-cover">
                 <div class="cover-default"></div>
-                <div class="bvideo-cover-layer" style="background-image:url(https://images.weserv.nl/?url=http://i2.hdslb.com/bfs/archive/5ee9008f615977ff34ee13f8e7172bdf49199dab.jpg)">
+                <div class="bvideo-cover-layer" style="background-image:url(https://images.weserv.nl/?url=http://i0.hdslb.com/bfs/archive/94aac44deb4ab4f06bca3b8b585f00691ce8c1cb.jpg)">
                     <i class="icon-video"></i>
                 </div>
-                <span class="duration">00:06:45</span>
+                <span class="duration">02:06:19</span>
             </div>
             <div class="bvideo-info">
-                <p class="title">前端面试题：call、apply、bind的基本概念</p>
+                <p class="title">vue生命周期、axios二次封装、api解耦、环境变量、$nextTick原理【最新录制vue课程片段】</p>
                 <p class="card-status">
                     <span class="play-num">
                         <i class="fa fa-youtube-play"></i>
-                        <span>1.9万</span></span>
+                        <span>5712</span></span>
                     <span>
                         <i class="fa fa-list-alt"></i>
-                        <span>56</span></span></p>
+                        <span>8</span></span></p>
                 <div class="partition">
                     <label class="card-label">视频</label>
                     <label class="up-label"></label>
-                    <label class="up-name">晓舟报告</label>
+                    <label class="up-name">老张前端</label>
                 </div>
                 <div class="actions hide"></div>
             </div>
         </div>
     </a>
-</div></li>
-</ol>
-<p>这四种方式，使用构造器调用模式的优先级最高，然后是 <code>apply</code> 、 <code>call</code> 和 <code>bind</code> 调用模式，然后是方法调用模式，然后是函数调用模式。</p>
-<link rel="stylesheet" href="/css/bilicard.css" type="text/css">
+</div><link rel="stylesheet" href="/css/bilicard.css" type="text/css">
                 
             </div>
             <hr/>
@@ -530,7 +536,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://bruce380.github.io/2022/08/17/this-dui-xiang-de-li-jie/">https://bruce380.github.io/2022/08/17/this-dui-xiang-de-li-jie/</a>
+                    <a href="https://bruce380.github.io/2022/08/30/vue-sheng-ming-zhou-qi/">https://bruce380.github.io/2022/08/30/vue-sheng-ming-zhou-qi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -568,8 +574,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
                                 </a>
                             
                         </div>
@@ -739,17 +745,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/08/18/dom-he-bom/">
+                <a href="/2022/08/30/vue-sheng-ming-zhou-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="DOM 和 BOM">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Vue生命周期">
                         
-                        <span class="card-title">DOM 和 BOM</span>
+                        <span class="card-title">Vue生命周期</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -759,26 +766,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学习笔记
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>
@@ -792,13 +800,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/17/javascript-de-zuo-yong-yu-lian/">
+                <a href="/2022/08/28/v-if-tiao-jian-xuan-ran-v-for-lie-biao-xuan-ran-key-de-gong-zuo-yuan-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Javascript 的作用域链">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="v-if(条件渲染)、v-for(列表渲染)、key的工作原理">
                         
-                        <span class="card-title">Javascript 的作用域链</span>
+                        <span class="card-title">v-if(条件渲染)、v-for(列表渲染)、key的工作原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -809,7 +817,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-28
                             </span>
                         <span class="publish-author">
                             
@@ -826,8 +834,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
+                    </a>
+                    
+                    <a href="/tags/DOM/">
+                        <span class="chip bg-color">DOM</span>
                     </a>
                     
                 </div>

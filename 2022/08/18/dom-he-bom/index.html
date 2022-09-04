@@ -461,6 +461,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><code>DOM</code> 指的是文档对象模型，它指的是把文档当做一个对象来对待，这个对象主要定义了处理网页内容的方法和接口。</p>
+<p><code>虚拟DOM</code>是为了解决浏览器性能问题而被设计出来的。若一次操作DOM中有十次更新DOM的动作，虚拟DOM不会立即操作DOM，而是将这十次更新的diff内容保存到本地一个js中，最终将这个js对象一次性attach 到DOM树上，在进行后续操作。避免大量无谓的计算量。所以，用js对象模拟DOM节点的好处是，页面的更新可以先全部反应在js对象（虚拟DOM）上，操作内存中的js对象的速度显然要更快，等更新完成之后，再将最终的js对象映射成真实的DOM，交由浏览器去绘制。</p>
 <p><code>BOM</code> 指的是浏览器对象模型，它指的是把浏览器当做一个对象来对待，这个对象主要定义了与浏览器进行交互的方法和接口。BOM的核心是 window，而 window 对象具有双重角色，它既是通过 js 访问浏览器窗口的一个接口，又是一个 Global（全局）对象。这意味着在网页中定义的任何对象，变量和函数，都作为全局对象的一个属性或者方法存在。window 对象含有 <code>location</code> 对象、<code>navigator</code> 对象、<code>screen</code> 对象、<code>history</code>对象等子对象，并且 DOM 的最根本的对象 <code>document</code> 对象也是 BOM 的 window 对象的子对象。</p>
 <link rel="stylesheet" href="/css/bilicard.css" type="text/css">
                 
